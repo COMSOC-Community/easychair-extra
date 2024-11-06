@@ -1,0 +1,300 @@
+topic,header?
+"Fairness, Ethics, and Trust",yes
+Accountability,no
+"AI in Law, Justice, Regulation, and Governance",no
+"AI for Social Good",no
+"Consciousness and Philosophy of Mind",no
+"Environmental Impacts of AI",no
+"Explainability and Interpretability in Machine Learning",no
+"Explainability (outside Machine Learning)",no
+"Fairness and Bias",no
+"Machine Ethics",no
+"Morality and Value-Based AI",no
+"Philosophical Foundations of AI",no
+"Privacy and Security",no
+"Responsible AI",no
+"Robot Rights",no
+"Safety and Robustness",no
+"Societal Impacts of AI",no
+"Standards and Certification",no
+Transparency,no
+Trust,no
+"Other Topics Related to Fairness, Ethics, or Trust",no
+"Computer Vision",yes
+"3D Computer Vision",no
+"Adversarial Attacks on CV Systems",no
+"Autonomous Driving",no
+Biometrics,no
+"Computer Vision Theory",no
+"Explainability in Computer Vision",no
+"Face, Gesture, and Pose Recognition",no
+"Image and Video Retrieval",no
+"Image and Video Generation",no
+"Language and Vision",no
+"Machine Learning for Computer Vision",no
+"Medical and Biological Imaging",no
+"Motion and Tracking",no
+"Object Detection and Categorisation",no
+"Representation Learning for Computer Vision",no
+"Scene Analysis and Understanding",no
+"Segmentation, Grouping, and Shape Analysis",no
+"Video Understanding and Activity Analysis",no
+"Visual Reasoning and Symbolic Representation",no
+"Other Topics in Computer Vision",no
+"Constraints and Satisfiability",yes
+"Constraint Learning and Acquisition",no
+"Constraint Optimisation",no
+"Constraint Programming",no
+"Constraint Satisfaction",no
+"Constraints, Data Mining, and Machine Learning",no
+"Distributed CSP and Optimisation",no
+"Dynamic Programming",no
+"Global Constraints",no
+"Inductive and Co-Inductive Logic Programming",no
+"Knowledge Compilation",no
+"Logic Programming",no
+"Mixed Discrete and Continuous Optimisation",no
+Satisfiability,no
+"Satisfiability Modulo Theories",no
+"Solvers and Tools",no
+"Other Topics in Constraints and Satisfiability",no
+"Data Mining",yes
+"Anomaly/Outlier Detection",no
+"Big Data and Scalability",no
+"Data Compression",no
+"Data Stream Mining",no
+"Data Visualisation and Summarisation",no
+"Graph Mining, Social Network Analysis, and Community Mining",no
+"Information Retrieval",no
+"Intelligent Database Systems",no
+"Mining Codebase and Software Repositories",no
+"Mining Heterogeneous Data",no
+"Mining Spatial and Temporal Data",no
+"Mining Visual, Multimedia, and Multimodal Data",no
+"Mining Semi-Structured Data",no
+"Personalisation and User Modelling",no
+"Privacy in Data Mining",no
+"Recommender Systems",no
+"Rule Mining and Pattern Mining",no
+"Web Search",no
+"Other Topics in Data Mining",no
+"Humans and AI",yes
+"Cognitive Modelling",no
+"Computer-Aided Education",no
+"Human Computation and Crowdsourcing",no
+"Human-Aware Planning and Behaviour Prediction",no
+"Human-Computer Interaction",no
+"Human-Computer Teamwork, Team Formation, and Collaboration",no
+"Human-in-the-loop Systems",no
+"Human-Machine Interaction Techniques and Devices",no
+"Human-Robot/Agent Interaction",no
+"Intelligent Virtual Agents",no
+"Learning Human Values and Preferences",no
+"Planning and Decision Support for Human-Machine Teams",no
+"Reinforcement Learning with Human Feedback",no
+"Understanding People: Theories, Concepts, and Methods",no
+"User Experience and Usability",no
+"User Modelling and Personalisation",no
+"Other Topics in Humans and AI",no
+"Knowledge Representation and Reasoning",yes
+"Answer Set Programming",no
+Argumentation,no
+"Automated Reasoning and Theorem Proving",no
+"Belief Revision, Update, and Merging",no
+"Case-Based Reasoning",no
+"Commonsense Reasoning",no
+"Description Logics",no
+"Abductive Reasoning and Diagnosis",no
+"Geometric, Spatial, and Temporal Reasoning",no
+"Knowledge Acquisition",no
+"Knowledge Graphs and Open Linked Data",no
+"Knowledge Representation Languages",no
+"Logic Foundations",no
+"Non-Monotonic Reasoning",no
+Ontologies,no
+Preferences,no
+"Qualitative Reasoning",no
+"Reasoning about Action and Change",no
+"Reasoning about Knowledge and Beliefs",no
+"Semantic Web",no
+Verification,no
+"Other Topics in Knowledge Representation and Reasoning",no
+"Machine Learning",yes
+"Active Learning",no
+"Adversarial Learning and Robustness",no
+"Automated Learning and Hyperparameter Tuning",no
+"Bayesian Learning",no
+"Causal Learning",no
+"Classification and Regression",no
+Clustering,no
+"Deep Generative Models and Auto-Encoders",no
+"Deep Learning Theory",no
+"Deep Neural Network Architectures",no
+"Deep Neural Network Algorithms",no
+"Deep Reinforcement Learning",no
+"Dimensionality Reduction/Feature Selection",no
+"Distributed Machine Learning",no
+"Efficient Methods for Machine Learning",no
+"Ensemble Methods",no
+"Evaluation and Analysis in Machine Learning",no
+"Evolutionary Learning",no
+"Federated Learning",no
+"Genetic Algorithms",no
+"Graph-Based Machine Learning",no
+"Imitation Learning and Inverse Reinforcement Learning",no
+"Kernel Methods",no
+"Learning Preferences or Rankings",no
+"Learning Theory",no
+"Lifelong and Continual Learning",no
+Meta-Learning,no
+"Model Adaptation, Compression, and Distillation",no
+"Multi-Class/Multi-Label Learning and Extreme Classification",no
+"Multi-Instance/Multi-View Learning",no
+"Multimodal Learning",no
+"Neuro-Symbolic Methods",no
+"Online Learning and Bandits",no
+"Optimisation in Machine Learning",no
+"Privacy-Aware Machine Learning",no
+"Quantum Machine Learning",no
+"Reinforcement Learning Algorithms",no
+"Reinforcement Learning Theory",no
+"Relational Learning",no
+"Representation Learning",no
+"Scalability of Machine Learning Systems",no
+"Semi-Supervised Learning",no
+"Time-Series and Data Streams",no
+"Transfer, Domain Adaptation, and Multi-Task Learning",no
+"Unsupervised and Self-Supervised Learning",no
+"Other Topics in Machine Learning",no
+"Multiagent Systems",yes
+"Agent Theories and Models",no
+"Agent-Based Simulation and Complex Systems",no
+"Algorithmic Game Theory",no
+"Communication, Coordination, and Collaboration",no
+"Behavioural Game Theory",no
+"Computational Social Choice",no
+"Coordination, Organisations, Institutions, and Norms",no
+"Distributed Problem Solving",no
+"Economic Paradigms",no
+"Engineering Multiagent Systems",no
+"Fair Division",no
+"Mechanism Design",no
+"Multiagent Learning",no
+"Multiagent Planning",no
+"Social Networks",no
+"Swarm Intelligence",no
+"Voting Theory",no
+"Other Topics in Multiagent Systems",no
+"Natural Language Processing",yes
+"Adversarial Attacks on NLP Systems",no
+"Conversational AI and Dialogue Systems",no
+"Discourse and Pragmatics",no
+"Information Extraction",no
+"Interpretability and Analysis of NLP Models",no
+"Language Grounding",no
+"Large Language Models",no
+"Lexical Semantics",no
+"Linguistic Theories, Cognitive Modelling, and Psycholinguistics",no
+"Machine Learning for NLP",no
+"Machine Translation",no
+"Multilingualism and Linguistic Diversity",no
+"Natural Language Generation",no
+"NLP Resources and Evaluation",no
+"Ontology Induction from Text",no
+"Phonology, Morphology, and Word Segmentation",no
+"Question Answering",no
+"Sentence-Level Semantics and Textual Inference",no
+"Sentiment Analysis, Stylistic Analysis, and Argument Mining",no
+"Speech and Multimodality",no
+Summarisation,no
+"Syntax and Parsing",no
+"Text Mining",no
+"Vision and Language",no
+"Other Topics in Natural Language Processing",no
+"Planning and Search",yes
+"Activity and Plan Recognition",no
+"Adversarial Search",no
+"Classical Planning",no
+"Combinatorial Search and Optimisation",no
+"Conformant, Contingent, and Adversarial Planning",no
+"Continual, Online, and Real-Time Planning",no
+"Game Playing",no
+"Heuristic Search",no
+"Human-Aware Planning",no
+"Knowledge Acquisition and Representation for Planning",no
+"Local Search",no
+"Markov Decision Processes",no
+"Mixed Discrete/Continuous Planning",no
+"Partially Observable and Unobservable Domains",no
+"Plan Execution, Monitoring, and Repair",no
+"Planning and Machine Learning",no
+"Planning under Uncertainty",no
+Routing,no
+Scheduling,no
+"Search and Machine Learning",no
+"Search in Planning and Scheduling",no
+"Other Topics in Planning and Search",no
+Robotics,yes
+"Behaviour Learning and Control for Robotics",no
+"Cognitive Robotics",no
+"Human-Robot Interaction",no
+"Localisation, Mapping, and Navigation",no
+"Machine Learning for Robotics",no
+"Multimodal Perception and Sensor Fusion",no
+"Multi-Robot Systems",no
+"Optimisation for Robotics",no
+"Robot Manipulation",no
+"Robot Planning and Scheduling",no
+"Other Topics in Robotics",no
+"Uncertainty in AI",yes
+"Approximate Inference",no
+"Bayesian Networks",no
+Causality,no
+"Decision and Utility Theory",no
+"Fuzzy Sets and Systems",no
+"Graphical Models",no
+"Non-Probabilistic Models of Uncertainty",no
+"Probabilistic Modelling",no
+"Probabilistic Programming",no
+"Randomised Algorithms",no
+"Sequential Decision Making",no
+"Spatial and Temporal Models of Uncertainty",no
+"Stochastic Models and Probabilistic Inference",no
+"Stochastic Optimisation",no
+"Uncertainty Representations",no
+"Other Topics in Uncertainty in AI",no
+"Multidisciplinary Topics",yes
+Aerospace,no
+"Artificial Life",no
+"Arts and Creativity",no
+Bioinformatics,no
+"Blockchain Technology",no
+"Cognitive Science",no
+"Computer Games",no
+"Cyber Security and Privacy",no
+Databases,no
+"Digital Democracy",no
+"Economics and Finance",no
+Education,no
+"Energy, Environment, and Sustainability",no
+Entertainment,no
+Hardware,no
+"Health and Medicine",no
+Humanities,no
+"Internet of Things",no
+"Life Sciences",no
+Marketing,no
+Mobility,no
+Neuroscience,no
+"News and Media",no
+"Philosophy and Ethics",no
+"Physical Sciences",no
+"Quantum Computing",no
+"Real-Time Systems",no
+"Smart Cities and Urban Planning",no
+"Social Sciences",no
+"Software Engineering",no
+Sports,no
+Transportation,no
+"Web and Network Science",no
+"Other Multidisciplinary Topics",no
