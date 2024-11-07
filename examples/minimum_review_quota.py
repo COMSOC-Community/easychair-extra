@@ -58,5 +58,5 @@ if __name__ == "__main__":
                 break
             num_assigned_previous = num_assigned
         else:
-            print(f"\tProblem solving the ILP...")
+            print("\tProblem solving the ILP...")
             break

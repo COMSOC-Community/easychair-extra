@@ -292,7 +292,7 @@ def generate_review_files(
         threshold = 20 / len(all_submissions)
         if person["role"] == "senior PC member":
             threshold *= 2.5
-        if person["role"] == "associate chair":
+        elif person["role"] == "associate chair":
             threshold *= 4
         for submission in all_submissions:
             if random.random() < 20 / len(all_submissions):
