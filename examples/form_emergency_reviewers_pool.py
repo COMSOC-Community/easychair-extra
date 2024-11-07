@@ -14,25 +14,28 @@ def main():
         os.path.join(root_dir, "committee.csv"),
         bids_file_path=os.path.join(root_dir, "bidding.csv"),
     )
-    committee = committee.head(300)  # Reduce size for performance reason
+    committee = committee.head(600)  # Reduce size for performance reason
 
     # Read the submission file
     submissions = read_submission(os.path.join(root_dir, "submission.csv"))
-    submissions = submissions.head(150)  # Reduce size for performance reason
+    submissions = submissions.head(200)  # Reduce size for performance reason
 
     # Compute a bid profile
     bid_level_weights = {"yes": 1, "maybe": 0.5}
     bid_profile = committee_to_bid_profile(committee, submissions, bid_level_weights)
+
     # Compute a set of emergency reviewers
-    max_num_emergency_revs = int(len(committee.index) * 0.2)
+    max_num_emergency_revs = int(len(committee.index) * 0.1)
     emergency_revs_assignment = find_emergency_reviewers(
         bid_profile, bid_level_weights, max_num_emergency_revs
     )
     emergency_reviewers = sorted(emergency_revs_assignment)
-    num_submission_covered = sum(len(p) for p in emergency_revs_assignment.values())
+    num_submission_covered = len(set(s for p in emergency_revs_assignment.values() for s in p))
+    cum_submission_covered = sum(len(p) for p in emergency_revs_assignment.values())
     print(f"These {len(emergency_reviewers)} reviewers can serve as emergency reviewers: "
           f"{emergency_reviewers}.")
-    print(f"This pool of emergency reviewers covers {num_submission_covered}.\n")
+    print(f"This pool of emergency reviewers covers {num_submission_covered} submissions "
+          f"out of {len(submissions.index)} (cumulative covering is {cum_submission_covered}).\n")
 
     # Check that a review assignment would still be possible without the emergency reviewers
     new_bid_profile = {

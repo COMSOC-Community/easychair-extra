@@ -203,9 +203,14 @@ def find_emergency_reviewers(
     for s, rev_vars in submissions_vars.items():
         m += submissions_covered_vars[s] <= xsum(rev_vars.values())
 
+    # If the submission is covered and the reviewer is used, then we have to assign them the sub
+    for r, sub_vars in reviewers_vars.items():
+        for s, sub_var in sub_vars.items():
+            m += sub_var >= submissions_covered_vars[s] + reviewers_used_vars[r] - 2
+
     m += xsum(reviewers_used_vars.values()) <= max_num_reviewers
 
-    objective = xsum(submissions_covered_vars.values())
+    objective = xsum(submissions_covered_vars.values()) * len(submissions_vars) + xsum(xsum(v) for v in reviewers_vars.values())
     m.objective = maximize(objective)
 
     m.verbose = verbose
