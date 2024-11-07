@@ -194,24 +194,14 @@ def find_emergency_reviewers(
         submissions_covered_vars,
     ) = construct_mip_variables_for_assignment(bid_profile, bid_weights)
 
+    # Set up the constraints for the reviewers_used_vars
     for r, sub_vars in reviewers_vars.items():
         for sub_var in sub_vars.values():
             m += reviewers_used_vars[r] >= sub_var
 
+    # Set up the constraints for the submissions_covered_vars
     for s, rev_vars in submissions_vars.items():
-        for rev_var in rev_vars.values():
-            m += submissions_covered_vars[s] >= rev_var
-
-    min_cover_vars = {}
-    for s in submissions_vars:
-        min_cover_vars[s] = m.add_var(name=f"l_{s}", var_type=BINARY)
-
-    for s, rev_vars in submissions_vars.items():
-        for r in rev_vars:
-            m += min_cover_vars[s] >= reviewers_used_vars[r]
-
-    for s, v in min_cover_vars.items():
-        m += submissions_covered_vars[s] <= v
+        m += submissions_covered_vars[s] <= xsum(rev_vars.values())
 
     m += xsum(reviewers_used_vars.values()) <= max_num_reviewers
 
@@ -235,8 +225,8 @@ def find_emergency_reviewers(
                     m.objective_bound
                 )
             )
-    solution = None
 
+    solution = None
     if status == OptimizationStatus.OPTIMAL or status == OptimizationStatus.FEASIBLE:
         solution = {}
         for r, v in reviewers_used_vars.items():

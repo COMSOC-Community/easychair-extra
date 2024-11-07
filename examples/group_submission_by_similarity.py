@@ -162,7 +162,6 @@ def main():
         os.path.join(root_dir, "submission.csv"),
         submission_topic_file_path=os.path.join(root_dir, "submission_topic.csv"),
     )
-    submission_df = submission_df.head(100)
 
     # Compute and aggregate the bid similarity and the topic similarity
     bid_level_weights = {"yes": 1, "maybe": 0.5}

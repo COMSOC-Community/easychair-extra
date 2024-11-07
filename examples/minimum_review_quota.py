@@ -8,7 +8,8 @@ from easychair_extra.reviewassignment import (
     committee_to_bid_profile,
 )
 
-if __name__ == "__main__":
+
+def main():
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
     # Read the committee file with the bids
@@ -62,3 +63,7 @@ if __name__ == "__main__":
         else:
             print("\tProblem solving the ILP...")
             break
+
+
+if __name__ == "__main__":
+    main()
