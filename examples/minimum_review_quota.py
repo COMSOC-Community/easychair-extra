@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 
 from easychair_extra.read import read_committee, read_submission

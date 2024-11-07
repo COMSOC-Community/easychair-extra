@@ -22,6 +22,14 @@ def bid_similarity(
         bid_level_weight : dict
             A dict indicating for each bid level a weight.
     """
+    for bid_level in bid_level_weight:
+        if f"bids_{bid_level}" not in committee_df.columns:
+            raise ValueError(
+                f"According to the bid_level_weight dict, there should be a bids_{bid_level}"
+                "column in the committee dataframe. This column does not exist. Did you forget "
+                "to pass a 'bidding_file_path' argument to the read_committee function?"
+            )
+
     all_paper_ids = submission_df["#"].tolist()
     number_co_bidders = {p1: {p2: 0 for p2 in all_paper_ids} for p1 in all_paper_ids}
     number_bidders = {p: 0 for p in all_paper_ids}
