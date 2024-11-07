@@ -19,9 +19,11 @@ def papers_without_pc(committee_df: DataFrame, submission_df: DataFrame):
             The committee dataframe
     """
     if "authors_id" not in submission_df.columns:
-        raise ValueError("There is no 'authors_id' column in the submission dataframe. Did you "
-                         "forget to pass a 'author_file_path' argument to the read_submission "
-                         "function?")
+        raise ValueError(
+            "There is no 'authors_id' column in the submission dataframe. Did you "
+            "forget to pass a 'author_file_path' argument to the read_submission "
+            "function?"
+        )
 
     def aux(row):
         if row.get("all_authors_students"):

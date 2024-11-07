@@ -3,7 +3,9 @@ from __future__ import annotations
 from pandas import DataFrame
 
 
-def bid_similarity(submission_df: DataFrame, committee_df: DataFrame, bid_level_weight: dict):
+def bid_similarity(
+    submission_df: DataFrame, committee_df: DataFrame, bid_level_weight: dict
+):
     """Returns a dictionary mapping submission identifiers to a bid similarity dict. The latter is a
     dictionary mapping submissions to their bid similarity score.
 
@@ -56,9 +58,11 @@ def topic_similarity(submission_df: DataFrame):
             The submission dataframe
     """
     if "topics" not in submission_df.columns:
-        raise ValueError("There is no 'topics' column in the submission dataframe. Did you forget "
-                         "to pass a 'submission_topic_file_path' argument to the read_submission "
-                         "function?")
+        raise ValueError(
+            "There is no 'topics' column in the submission dataframe. Did you forget "
+            "to pass a 'submission_topic_file_path' argument to the read_submission "
+            "function?"
+        )
 
     def pairwise_similarity(df_row, p1_id, p1_topics):
         p2_id = df_row["#"]

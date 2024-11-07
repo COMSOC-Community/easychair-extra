@@ -4,7 +4,9 @@ from mip import xsum, maximize, OptimizationStatus, Model, BINARY, LinExpr
 from pandas import DataFrame
 
 
-def committee_to_bid_profile(committee_df: DataFrame, submission_df: DataFrame, bid_levels: dict):
+def committee_to_bid_profile(
+    committee_df: DataFrame, submission_df: DataFrame, bid_levels: dict
+):
     """Returns a dictionary mapping committee members to their bid profile. The latter is
     a dictionary mapping bid levels ("Yes", "No", "Maybe"...) to list of submission identifiers.
 

@@ -9,12 +9,13 @@ from faker import Faker
 
 
 def generate_submission_files(
-        num_submissions: int,
-        *,
-        submission_file_path: str = "submission.csv",
-        submission_topic_file_path: str = "submission_topic.csv",
-        author_file_path: str = "author.csv",
-        topic_list: list = None):
+    num_submissions: int,
+    *,
+    submission_file_path: str = "submission.csv",
+    submission_topic_file_path: str = "submission_topic.csv",
+    author_file_path: str = "author.csv",
+    topic_list: list = None,
+):
     """Generates sample files related to the submissions. Specifically, the submission, the
     submission topic and the author files are generated. The format of the files follows that of
     EasyChair. The EasyChair format has been inferred from actual files, there is thus no guarantees
@@ -51,8 +52,11 @@ def generate_submission_files(
             all_authors[author] = None
         sub_to_topics[sub_id] = random.sample(topic_list, random.randint(2, 5))
         decision = random.choice(
-            ["no decision"] * 10 + ["desk reject"] * 3 + ["reject"] * 25 + ["accept"] * 10 +
-            ["withdrawn"] * 1
+            ["no decision"] * 10
+            + ["desk reject"] * 3
+            + ["reject"] * 25
+            + ["accept"] * 10
+            + ["withdrawn"] * 1
         )
         submission_dict = {
             "#": sub_id,
@@ -66,7 +70,7 @@ def generate_submission_files(
             "notified": "no",
             "reviews sent": "no",
             "abstract": fake.text(max_nb_chars=500),
-            "deleted?": 'yes' if random.random() < 0.05 else 'no'
+            "deleted?": "yes" if random.random() < 0.05 else "no",
         }
         submissions.append(submission_dict)
 
@@ -82,7 +86,7 @@ def generate_submission_files(
         "notified",
         "reviews sent",
         "abstract",
-        "deleted?"
+        "deleted?",
     ]
     with open(submission_file_path, "w", encoding="utf-8") as f:
         writer = csv.writer(f, delimiter=",")
@@ -90,8 +94,17 @@ def generate_submission_files(
         for s in submissions:
             writer.writerow([s[h] for h in submission_headers])
 
-    author_headers = ["submission #", "first name", "last name", "email", "country", "affiliation",
-                      "Web page", "person #", "corresponding?"]
+    author_headers = [
+        "submission #",
+        "first name",
+        "last name",
+        "email",
+        "country",
+        "affiliation",
+        "Web page",
+        "person #",
+        "corresponding?",
+    ]
 
     for author_id, author in enumerate(all_authors):
         all_authors[author] = {
@@ -101,7 +114,7 @@ def generate_submission_files(
             "country": fake.country(),
             "affiliation": fake.sentence(nb_words=4)[:-1],
             "Web page": fake.url(),
-            "person #": author_id + 1
+            "person #": author_id + 1,
         }
 
     with open(author_file_path, "w", encoding="utf-8") as f:
@@ -111,17 +124,19 @@ def generate_submission_files(
             corresponding_author = random.choice(authors)
             for author in authors:
                 author_details = all_authors[author]
-                writer.writerow([
-                    sub_id,
-                    author_details["first name"],
-                    author_details["last name"],
-                    author_details["email"],
-                    author_details["country"],
-                    author_details["affiliation"],
-                    author_details["Web page"],
-                    author_details["person #"],
-                    "yes" if author == corresponding_author else "no"
-                ])
+                writer.writerow(
+                    [
+                        sub_id,
+                        author_details["first name"],
+                        author_details["last name"],
+                        author_details["email"],
+                        author_details["country"],
+                        author_details["affiliation"],
+                        author_details["Web page"],
+                        author_details["person #"],
+                        "yes" if author == corresponding_author else "no",
+                    ]
+                )
 
     with open(submission_topic_file_path, "w", encoding="utf-8") as f:
         writer = csv.writer(f, delimiter=",")
@@ -132,12 +147,12 @@ def generate_submission_files(
 
 
 def generate_committee_files(
-        committee_size: int,
-        authors_file_path: str,
-        *,
-        committee_file_path: str = "committee.csv",
-        committee_topic_file_path: str = "committee_topic.csv",
-        topic_list: list = None
+    committee_size: int,
+    authors_file_path: str,
+    *,
+    committee_file_path: str = "committee.csv",
+    committee_topic_file_path: str = "committee_topic.csv",
+    topic_list: list = None,
 ):
     """Generates sample files related to the committee. Specifically, the committee and the
     committee topic files are generated. The format of the files follows that of
@@ -189,31 +204,45 @@ def generate_committee_files(
 
         person_details["#"] = person_idx
         person_details["role"] = random.choice(
-            ["PC member"] * 5 * 5 + ["senior PC member"] * 5 + ["associate chair"])
+            ["PC member"] * 5 * 5 + ["senior PC member"] * 5 + ["associate chair"]
+        )
         all_persons.append(person_details)
 
         key = (
-            person_details["#"], person_details["first name"] + " " + person_details["last name"])
+            person_details["#"],
+            person_details["first name"] + " " + person_details["last name"],
+        )
         person_to_topics[key] = random.sample(topic_list, random.randint(5, 10))
 
-    committee_headers = ["#", "person #", "first name", "last name", "email", "country",
-                         "affiliation", "Web page", "role"]
+    committee_headers = [
+        "#",
+        "person #",
+        "first name",
+        "last name",
+        "email",
+        "country",
+        "affiliation",
+        "Web page",
+        "role",
+    ]
 
     with open(committee_file_path, "w", encoding="utf-8") as f:
         writer = csv.writer(f, delimiter=",")
         writer.writerow(committee_headers)
         for person in all_persons:
-            writer.writerow([
-                person["#"],
-                person["person #"],
-                person["first name"],
-                person["last name"],
-                person["email"],
-                person["country"],
-                person["affiliation"],
-                person["Web page"],
-                person["role"]
-            ])
+            writer.writerow(
+                [
+                    person["#"],
+                    person["person #"],
+                    person["first name"],
+                    person["last name"],
+                    person["email"],
+                    person["country"],
+                    person["affiliation"],
+                    person["Web page"],
+                    person["role"],
+                ]
+            )
 
     with open(committee_topic_file_path, "w", encoding="utf-8") as f:
         writer = csv.writer(f, delimiter=",")
@@ -224,10 +253,10 @@ def generate_committee_files(
 
 
 def generate_review_files(
-        submission_file_path: str,
-        committee_file_path: str,
-        bidding_file_path: str = "bidding.csv",
-        review_file_path: str = "review.csv",
+    submission_file_path: str,
+    committee_file_path: str,
+    bidding_file_path: str = "bidding.csv",
+    review_file_path: str = "review.csv",
 ):
     """Generates sample files related to the reviews. Specifically, the bidding and the review
     files are generated. The format of the files follows that of EasyChair. The EasyChair format
@@ -279,19 +308,16 @@ def generate_review_files(
         writer.writerow(["member #", "member name", "submission #", "bid"])
         for person_key, bid_dict in person_to_bids.items():
             for sub, bid in bid_dict.items():
-                writer.writerow([
-                    person_key[0],
-                    person_key[1],
-                    sub,
-                    bid
-                ])
+                writer.writerow([person_key[0], person_key[1], sub, bid])
 
     all_reviews = []
     potential_reviewers = [p for p in all_persons if p["role"] == "PC member"]
     review_counter = 1
     for submission in all_submissions:
         num_reviewers = random.choice([0] + [1] * 2 + [2] * 3 + [4] * 4)
-        for reviewer_idx, reviewer in enumerate(random.sample(potential_reviewers, num_reviewers)):
+        for reviewer_idx, reviewer in enumerate(
+            random.sample(potential_reviewers, num_reviewers)
+        ):
             score = random.randint(1, 10)
             review = {
                 "#": review_counter,
@@ -323,9 +349,24 @@ def generate_review_files(
             all_reviews.append(review)
             review_counter += 1
 
-    review_headers = ["#", "submission #", "member #", "member name", "number", "version", "text",
-                      "scores", "total score", "reviewer first name", "reviewer last name",
-                      "reviewer email", "reviewer person #", "date", "time", "attachment?"]
+    review_headers = [
+        "#",
+        "submission #",
+        "member #",
+        "member name",
+        "number",
+        "version",
+        "text",
+        "scores",
+        "total score",
+        "reviewer first name",
+        "reviewer last name",
+        "reviewer email",
+        "reviewer person #",
+        "date",
+        "time",
+        "attachment?",
+    ]
 
     with open(review_file_path, "w", encoding="utf-8") as f:
         writer = csv.writer(f, delimiter=",")
@@ -335,17 +376,17 @@ def generate_review_files(
 
 
 def generate_full_conference(
-        num_submissions,
-        committee_size,
-        *,
-        submission_file_path: str = "submission.csv",
-        submission_topic_file_path: str = "submission_topic.csv",
-        author_file_path: str = "author.csv",
-        committee_file_path="committee.csv",
-        committee_topic_file_path="committee_topic.csv",
-        bidding_file_path="bidding.csv",
-        review_file_path="review.csv",
-        topic_list=None,
+    num_submissions,
+    committee_size,
+    *,
+    submission_file_path: str = "submission.csv",
+    submission_topic_file_path: str = "submission_topic.csv",
+    author_file_path: str = "author.csv",
+    committee_file_path="committee.csv",
+    committee_topic_file_path="committee_topic.csv",
+    bidding_file_path="bidding.csv",
+    review_file_path="review.csv",
+    topic_list=None,
 ):
     """Generates sample files to simulate a full conference. The format of the files follows that of
     EasyChair. The EasyChair format has been inferred from actual files, there is thus no guarantees
@@ -395,7 +436,7 @@ def generate_full_conference(
         submission_file_path,
         committee_file_path,
         bidding_file_path=bidding_file_path,
-        review_file_path=review_file_path
+        review_file_path=review_file_path,
     )
 
 

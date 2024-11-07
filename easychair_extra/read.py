@@ -42,7 +42,7 @@ def author_list_to_str(authors: list):
     if len(authors) == 1:
         return str(authors[0])
     last_author = authors[-1]
-    res = ', '.join(authors[:-1])
+    res = ", ".join(authors[:-1])
     res += " and " + str(last_author)
     return res
 
@@ -123,7 +123,9 @@ def read_committee(
             lambda df_row: pc_to_topics.get(df_row["#"], []), axis=1
         )
         if topics_to_areas:
-            df["areas"] = df.apply(lambda df_row: pc_to_areas.get(df_row["#"], []), axis=1)
+            df["areas"] = df.apply(
+                lambda df_row: pc_to_areas.get(df_row["#"], []), axis=1
+            )
 
     if bids_file_path:
         pc_to_bids = {}

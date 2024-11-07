@@ -1,7 +1,10 @@
 import os
 
 from easychair_extra.read import read_committee, read_submission
-from easychair_extra.reviewassignment import find_feasible_review_assignment, committee_to_bid_profile
+from easychair_extra.reviewassignment import (
+    find_feasible_review_assignment,
+    committee_to_bid_profile,
+)
 
 if __name__ == "__main__":
     # Read the committee file with the bids
@@ -11,7 +14,9 @@ if __name__ == "__main__":
     )
 
     # Read the submission file
-    submissions = read_submission(os.path.join("..", "easychair_sample_files", "submission.csv"))
+    submissions = read_submission(
+        os.path.join("..", "easychair_sample_files", "submission.csv")
+    )
 
     # Select reviewers and not higher up PC members
     reviewers = committee[committee["role"] == "PC member"]
