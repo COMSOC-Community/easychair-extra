@@ -3,17 +3,16 @@
 [![Build badge](https://github.com/COMSOC-Community/easychair-extra/workflows/build/badge.svg)](https://github.com/COMSOC-Community/easychair-extra/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/COMSOC-Community/easychair-extra/branch/main/graphs/badge.svg)](https://codecov.io/gh/COMSOC-Community/easychair-extra/tree/main)
 
-
 Python package to work with files exported from EasyChair. 
 Useful to develop tools when running a conference.
 
 This package came to life when Ulle Endriss was a PC chair for ECAI-2024. For this role, many tools
-enhancing the functionalities provided by EasyChair were needed. The tools that could benefit the
+enhancing the functionality provided by EasyChair were needed. The tools that could benefit the
 community have been gathered there.
 
 ## The Package
 
-The package is documented in the code and there is no current plan on provided a full-fleshed 
+The package is documented in the code and there is no current plan on providing a full-fledged 
 documentation. Roughly speaking:
 
 - `easychair_extra.read` provides functions to read EasyChair files;
@@ -25,8 +24,9 @@ submissions to PC members;
 
 ## Learn by Examples
 
-In the `examples` folder we provide example script of how to use the package. Check them out to
-understand how the package works.
+In the `examples` folder [link](https://github.com/COMSOC-Community/easychair-extra/tree/main/examples)
+we provide example scripts making use of the package. 
+Check them out to understand how the package works.
 
 Example files for typical EasyChair outputs are located in the `easychair_sample_files` folder.
 
