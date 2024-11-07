@@ -46,6 +46,9 @@ class TestRead(TestCase):
             "Anauthor Withandin Name",
             "Ulle Endriss",
         ]
+        authors = "Simon Rey and Anauthor Withandin Name and Ulle Endriss"
+        with self.assertRaises(ValueError):
+            authors_as_list(authors)
 
     def test_author_list_to_str(self):
         author_list = ["Simon Rey"]
@@ -86,6 +89,7 @@ class TestRead(TestCase):
                 root_dir, "submission_topic.csv"
             ),
             "author_file_path": os.path.join(root_dir, "author.csv"),
+            "review_file_path": os.path.join(root_dir, "review.csv"),
             "remove_deleted": False,
             "remove_desk_reject": False,
             "topics_to_areas": topics_to_areas,
