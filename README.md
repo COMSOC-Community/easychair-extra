@@ -24,7 +24,7 @@ submissions to PC members;
 
 ## Learn by Examples
 
-In the `examples` folder [link](https://github.com/COMSOC-Community/easychair-extra/tree/main/examples)
+In the `examples` folder ([link](https://github.com/COMSOC-Community/easychair-extra/tree/main/examples))
 we provide example scripts making use of the package. 
 Check them out to understand how the package works.
 
