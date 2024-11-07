@@ -7,15 +7,17 @@ from easychair_extra.reviewassignment import (
 )
 
 if __name__ == "__main__":
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+
     # Read the committee file with the bids
     committee = read_committee(
-        os.path.join("..", "easychair_sample_files", "committee.csv"),
-        bids_file_path=os.path.join("..", "easychair_sample_files", "bidding.csv"),
+        os.path.join(current_dir, "..", "easychair_sample_files", "committee.csv"),
+        bids_file_path=os.path.join(current_dir, "..", "easychair_sample_files", "bidding.csv"),
     )
 
     # Read the submission file
     submissions = read_submission(
-        os.path.join("..", "easychair_sample_files", "submission.csv")
+        os.path.join(current_dir, "..", "easychair_sample_files", "submission.csv")
     )
 
     # Select reviewers and not higher up PC members

@@ -10,7 +10,7 @@ class TestProgramCommittee(TestCase):
         current_dir = os.path.dirname(os.path.abspath(__file__))
         committee = read_committee(
             os.path.join(current_dir, "..", "easychair_sample_files", "committee.csv"),
-            bids_file_path=os.path.join("..", "easychair_sample_files", "bidding.csv"),
+            bids_file_path=os.path.join(current_dir, "..", "easychair_sample_files", "bidding.csv"),
         )
         submissions = read_submission(
             os.path.join(current_dir, "..", "easychair_sample_files", "submission.csv")

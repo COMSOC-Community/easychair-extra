@@ -445,20 +445,29 @@ def generate_full_conference(
 #
 #     from easychair_extra.read import read_topics
 #
+#     current_dir = os.path.dirname(os.path.abspath(__file__))
+#
 #     areas_to_topics, topics_to_areas = read_topics(
-#         os.path.join("..", "easychair_sample_files", "topics.csv")
+#         os.path.join(current_dir, "..", "easychair_sample_files", "topics.csv")
 #     )
 #     generate_full_conference(
 #         1000,
 #         2800,
-#         submission_file_path=os.path.join("..", "easychair_sample_files", "submission.csv"),
-#         submission_topic_file_path=os.path.join("..", "easychair_sample_files",
-#                                                 "submission_topic.csv"),
-#         author_file_path=os.path.join("..", "easychair_sample_files", "author.csv"),
-#         committee_file_path=os.path.join("..", "easychair_sample_files", "committee.csv"),
-#         committee_topic_file_path=os.path.join("..", "easychair_sample_files",
+#         submission_file_path=os.path.join(
+#             current_dir, "..", "easychair_sample_files", "submission.csv"
+#         ),
+#         submission_topic_file_path=os.path.join(
+#             current_dir, "..", "easychair_sample_files", "submission_topic.csv"
+#         ),
+#         author_file_path=os.path.join(current_dir, "..", "easychair_sample_files", "author.csv"),
+#         committee_file_path=os.path.join(
+#             current_dir, "..", "easychair_sample_files", "committee.csv"
+#         ),
+#         committee_topic_file_path=os.path.join(current_dir, "..", "easychair_sample_files",
 #                                                "committee_topic.csv"),
-#         bidding_file_path=os.path.join("..", "easychair_sample_files", "bidding.csv"),
-#         review_file_path=os.path.join("..", "easychair_sample_files", "review.csv"),
+#         bidding_file_path=os.path.join(
+#             current_dir, "..", "easychair_sample_files", "bidding.csv"
+#         ),
+#         review_file_path=os.path.join(current_dir, "..", "easychair_sample_files", "review.csv"),
 #         topic_list=list(topics_to_areas)
 #     )
