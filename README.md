@@ -1,5 +1,9 @@
 # EasyChair-Extra
 
+[![Build badge](https://github.com/COMSOC-Community/easychair-extra/workflows/build/badge.svg)](https://github.com/COMSOC-Community/easychair-extra/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/COMSOC-Community/easychair-extra/branch/main/graphs/badge.svg)](https://codecov.io/gh/COMSOC-Community/easychair-extra/tree/main)
+
+
 Python package to work with files exported from EasyChair. 
 Useful to develop tools when running a conference.
 
@@ -13,6 +17,7 @@ The package is documented in the code and there is no current plan on provided a
 documentation. Roughly speaking:
 
 - `easychair_extra.read` provides functions to read EasyChair files;
+- `easychair_extra.generate` provides functions to generate random EasyChair files;
 - `easychair_extra.programcommittee` provides functions relating to the committee;
 - `easychair_extra.reviewassignment` provides functions relating to the assignment of 
 submissions to PC members;

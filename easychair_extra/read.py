@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 import csv
+from collections import defaultdict
 
 import pandas as pd
 
@@ -74,11 +77,11 @@ def read_topics(topic_file_path: str):
 
 
 def read_committee(
-    committee_file_path,
+    committee_file_path: str,
     *,
-    committee_topic_file_path=None,
-    topics_to_areas=None,
-    bids_file_path=None,
+    committee_topic_file_path: str = None,
+    topics_to_areas: str = None,
+    bids_file_path: str = None,
 ):
     """Reads the committee file and return a dataframe with its content.
 
@@ -104,31 +107,23 @@ def read_committee(
     df["full name"] = df["first name"] + " " + df["last name"]
 
     if committee_topic_file_path:
-        if not topics_to_areas:
-            raise ValueError(
-                "If you set the committee_topic_file_path, then you also need to "
-                "provide the topics_to_areas mapping."
-            )
-        pc_to_topics = {}
-        pc_to_areas = {}
+        pc_to_topics = defaultdict(list)
+        pc_to_areas = defaultdict(list)
         with open(committee_topic_file_path, encoding="utf-8") as f:
             reader = csv.DictReader(f)
             for row in reader:
                 topic = row["topic"]  # The topic
                 member_id = int(row["member #"].strip())  # The id of the PC member
-                if member_id in pc_to_topics:
-                    pc_to_topics[member_id].append(topic)
-                else:
-                    pc_to_topics[member_id] = [topic]
-                area = topics_to_areas[topic]
-                if member_id in pc_to_areas and area not in pc_to_areas[member_id]:
+                pc_to_topics[member_id].append(topic)
+                if topics_to_areas:
+                    area = topics_to_areas[topic]
                     pc_to_areas[member_id].append(area)
-                else:
-                    pc_to_areas[member_id] = [area]
+
         df["topics"] = df.apply(
             lambda df_row: pc_to_topics.get(df_row["#"], []), axis=1
         )
-        df["areas"] = df.apply(lambda df_row: pc_to_areas.get(df_row["#"], []), axis=1)
+        if topics_to_areas:
+            df["areas"] = df.apply(lambda df_row: pc_to_areas.get(df_row["#"], []), axis=1)
 
     if bids_file_path:
         pc_to_bids = {}
@@ -212,23 +207,18 @@ def read_submission(
         df.drop(df[df["decision"] == "desk reject"].index, inplace=True)
 
     if submission_topic_file_path:
-        sub_to_topics = {}
-        sub_to_areas = {}
+        sub_to_topics = defaultdict(list)
+        sub_to_areas = defaultdict(list)
         with open(submission_topic_file_path, encoding="utf-8") as f:
             reader = csv.DictReader(f)
             for row in reader:
                 topic = row["topic"]  # The topic
                 sub_id = int(row["submission #"].strip())  # The id of the submission
-                if sub_id in sub_to_topics:
-                    sub_to_topics[sub_id].append(topic)
-                else:
-                    sub_to_topics[sub_id] = [topic]
+                sub_to_topics[sub_id].append(topic)
                 if topics_to_areas:
                     area = topics_to_areas[topic]
-                    if sub_id in sub_to_areas and area not in sub_to_areas[sub_id]:
-                        sub_to_areas[sub_id].append(area)
-                    else:
-                        sub_to_areas[sub_id] = [area]
+                    sub_to_areas[sub_id].append(area)
+
         df["topics"] = df.apply(
             lambda df_row: sub_to_topics.get(df_row["#"], []), axis=1
         )

@@ -1,7 +1,10 @@
+from __future__ import annotations
+
 from mip import xsum, maximize, OptimizationStatus, Model, BINARY, LinExpr
+from pandas import DataFrame
 
 
-def committee_to_bid_profile(committee_df, submission_df, bid_levels):
+def committee_to_bid_profile(committee_df: DataFrame, submission_df: DataFrame, bid_levels: dict):
     """Returns a dictionary mapping committee members to their bid profile. The latter is
     a dictionary mapping bid levels ("Yes", "No", "Maybe"...) to list of submission identifiers.
 
@@ -29,7 +32,7 @@ def committee_to_bid_profile(committee_df, submission_df, bid_levels):
     return bid_profile
 
 
-def construct_mip_variables_for_assignment(bid_profile, bid_weights):
+def construct_mip_variables_for_assignment(bid_profile: dict, bid_weights: dict):
     """Based on a bid profiles and on weights for each bid level, constructs the variables
     for an ILP to compute a review assignment.
 
