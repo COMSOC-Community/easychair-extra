@@ -7,6 +7,22 @@ from collections import defaultdict
 from datetime import datetime
 from faker import Faker
 
+from easychair_extra.read import author_list_to_str
+
+
+def generate_random_author(max_author_id):
+    fake = Faker()
+    author = fake.name()
+    return {
+        "first name": author.split(" ")[0],
+        "last name": author.split(" ")[1],
+        "email": fake.email(),
+        "country": fake.country(),
+        "affiliation": fake.sentence(nb_words=4)[:-1],
+        "Web page": fake.url(),
+        "person #": max_author_id + 1,
+    }
+
 
 def generate_submission_files(
     num_submissions: int,
@@ -43,13 +59,23 @@ def generate_submission_files(
     submissions = []
     sub_to_authors = defaultdict(list)
     all_authors = dict()
+    max_author_id = 1
     sub_to_topics = {}
     for sub_id in range(1, num_submissions + 2):
         num_authors = random.randint(1, 5)
-        authors = [fake.name() for _ in range(num_authors)]
-        sub_to_authors[sub_id] = authors
-        for author in authors:
-            all_authors[author] = None
+        authors_names = []
+        for i in range(num_authors):
+            if len(all_authors) > 0 and random.random() < 0.1:
+                random_author = random.choice(list(all_authors.values()))
+                while random_author["first name"] + " " + random_author["last name"] in authors_names:
+                    random_author = random.choice(list(all_authors.values()))
+                author = random_author
+            else:
+                author = generate_random_author(max_author_id)
+                all_authors[author["first name"] + " " + author["last name"]] = author
+                max_author_id += 1
+            authors_names.append(author["first name"] + " " + author["last name"])
+        sub_to_authors[sub_id] = authors_names
         sub_to_topics[sub_id] = random.sample(topic_list, random.randint(2, 5))
         decision = random.choice(
             ["no decision"] * 10
@@ -61,7 +87,7 @@ def generate_submission_files(
         submission_dict = {
             "#": sub_id,
             "title": fake.sentence(nb_words=6)[:-1],
-            "authors": authors,
+            "authors": author_list_to_str(authors_names),
             "submitted": datetime.now().strftime("%Y-%m-%d %H:%M"),
             "last updated": datetime.now().strftime("%Y-%m-%d %H:%M"),
             "form fields": "",
@@ -105,17 +131,6 @@ def generate_submission_files(
         "person #",
         "corresponding?",
     ]
-
-    for author_id, author in enumerate(all_authors):
-        all_authors[author] = {
-            "first name": author.split(" ")[0],
-            "last name": author.split(" ")[1],
-            "email": fake.email(),
-            "country": fake.country(),
-            "affiliation": fake.sentence(nb_words=4)[:-1],
-            "Web page": fake.url(),
-            "person #": author_id + 1,
-        }
 
     with open(author_file_path, "w", encoding="utf-8") as f:
         writer = csv.writer(f, delimiter=",")
@@ -440,34 +455,34 @@ def generate_full_conference(
     )
 
 
-# if __name__ == "__main__":
-#     import os
-#
-#     from easychair_extra.read import read_topics
-#
-#     current_dir = os.path.dirname(os.path.abspath(__file__))
-#
-#     areas_to_topics, topics_to_areas = read_topics(
-#         os.path.join(current_dir, "..", "easychair_sample_files", "topics.csv")
-#     )
-#     generate_full_conference(
-#         1000,
-#         2800,
-#         submission_file_path=os.path.join(
-#             current_dir, "..", "easychair_sample_files", "submission.csv"
-#         ),
-#         submission_topic_file_path=os.path.join(
-#             current_dir, "..", "easychair_sample_files", "submission_topic.csv"
-#         ),
-#         author_file_path=os.path.join(current_dir, "..", "easychair_sample_files", "author.csv"),
-#         committee_file_path=os.path.join(
-#             current_dir, "..", "easychair_sample_files", "committee.csv"
-#         ),
-#         committee_topic_file_path=os.path.join(current_dir, "..", "easychair_sample_files",
-#                                                "committee_topic.csv"),
-#         bidding_file_path=os.path.join(
-#             current_dir, "..", "easychair_sample_files", "bidding.csv"
-#         ),
-#         review_file_path=os.path.join(current_dir, "..", "easychair_sample_files", "review.csv"),
-#         topic_list=list(topics_to_areas)
-#     )
+if __name__ == "__main__":
+    import os
+
+    from easychair_extra.read import read_topics
+
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+
+    areas_to_topics, topics_to_areas = read_topics(
+        os.path.join(current_dir, "..", "easychair_sample_files", "topics.csv")
+    )
+    generate_full_conference(
+        1000,
+        2800,
+        submission_file_path=os.path.join(
+            current_dir, "..", "easychair_sample_files", "submission.csv"
+        ),
+        submission_topic_file_path=os.path.join(
+            current_dir, "..", "easychair_sample_files", "submission_topic.csv"
+        ),
+        author_file_path=os.path.join(current_dir, "..", "easychair_sample_files", "author.csv"),
+        committee_file_path=os.path.join(
+            current_dir, "..", "easychair_sample_files", "committee.csv"
+        ),
+        committee_topic_file_path=os.path.join(current_dir, "..", "easychair_sample_files",
+                                               "committee_topic.csv"),
+        bidding_file_path=os.path.join(
+            current_dir, "..", "easychair_sample_files", "bidding.csv"
+        ),
+        review_file_path=os.path.join(current_dir, "..", "easychair_sample_files", "review.csv"),
+        topic_list=list(topics_to_areas)
+    )

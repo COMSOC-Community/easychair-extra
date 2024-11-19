@@ -230,18 +230,21 @@ def read_submission(
             )
 
     if author_file_path:
-        sub_to_authors = {}
+        sub_to_authors = defaultdict(list)
+        corresponding_authors = defaultdict(list)
         with open(author_file_path, encoding="utf-8") as f:
             reader = csv.DictReader(f)
             for row in reader:
                 sub_id = int(row["submission #"].strip())  # The id of the submission
                 person_id = int(row["person #"].strip())  # The id of the person in EC
-                if sub_id in sub_to_authors:
-                    sub_to_authors[sub_id].append(person_id)
-                else:
-                    sub_to_authors[sub_id] = [person_id]
+                sub_to_authors[sub_id].append(person_id)
+                if row["corresponding?"] == "yes":
+                    corresponding_authors[sub_id].append(person_id)
         df["authors_id"] = df.apply(
             lambda df_row: sub_to_authors.get(df_row["#"], []), axis=1
+        )
+        df["corresponding_id"] = df.apply(
+            lambda df_row: corresponding_authors.get(df_row["#"], []), axis=1
         )
 
     if submission_field_value_path:
@@ -272,3 +275,12 @@ def read_submission(
             lambda df_row: sub_to_total_scores.get(df_row["#"], []), axis=1
         )
     return df
+
+
+def read_author(author_file_path):
+    df = pd.read_csv(author_file_path, delimiter=",", encoding="utf-8")
+    grouped_df = df.groupby(["first name", "last name", "email", "country", "affiliation", "Web page", "person #"])
+    res_df = grouped_df["submission #"].apply(list).reset_index(name="submission_ids")
+    res_df["full name"] = res_df["first name"] + " " + res_df["last name"]
+    return res_df
+
