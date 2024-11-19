@@ -2,7 +2,7 @@ import os
 
 import pandas as pd
 
-from easychair_extra.read import read_submission, read_committee
+from easychair_extra.read import read_submission
 
 
 def main():

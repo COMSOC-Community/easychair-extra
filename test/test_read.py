@@ -7,7 +7,7 @@ from easychair_extra.read import (
     authors_as_list,
     author_list_to_str,
     read_topics,
-    read_committee,
+    read_committee, read_author,
 )
 
 
@@ -132,3 +132,9 @@ class TestRead(TestCase):
             for arg in arguments:
                 args[arg] = optional_arguments[arg]
             read_committee(os.path.join(root_dir, "committee.csv"), **args)
+
+    def test_read_author(self):
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        root_dir = os.path.join(current_dir, "..", "easychair_sample_files")
+
+        read_author(os.path.join(root_dir, "author.csv"))
