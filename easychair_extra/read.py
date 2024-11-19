@@ -241,7 +241,7 @@ def read_submission(
                 if row["corresponding?"] == "yes":
                     corresponding_authors[sub_id].append(person_id)
         df["authors_id"] = df.apply(
-            lambda df_row: sub_to_authors.get(df_row["#"], []), axis=1
+            lambda df_row: tuple(sub_to_authors.get(df_row["#"], [])), axis=1
         )
         df["corresponding_id"] = df.apply(
             lambda df_row: corresponding_authors.get(df_row["#"], []), axis=1
